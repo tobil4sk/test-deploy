@@ -1,6 +1,9 @@
 name: manual_deploy
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 18 * * *"
 
 jobs:
   deploy:
