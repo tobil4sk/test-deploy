@@ -10,9 +10,12 @@ jobs:
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
     outputs:
-      name: ${{ matrix.name }}
+      name: ${{ matrix.name }}-${{ steps.build.output.version }}
     steps:
-    - run: echo "building!"
+    - run: |
+        echo "building!"
+        echo "version=1" >> "$GITHUB_OUTPUT"
+      id: build
       name: Building
 
   deploy:
