@@ -1,0 +1,11 @@
+name: manual_deploy
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - run: echo "deploying ${{ github.ref_type }} ${{ github.ref_name }} ${{ github.ref }}!"
+      name: deploying
