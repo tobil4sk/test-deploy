@@ -10,7 +10,7 @@ jobs:
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
     outputs:
-      name: ${{ matrix.name }}-${{ steps.build.output.version }}
+      name: ${{ matrix.name }}-${{ steps.build.outputs.version }}
     steps:
     - run: |
         echo "building!"
