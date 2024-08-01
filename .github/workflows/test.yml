@@ -16,7 +16,7 @@ jobs:
       name: Building
 
   deploy:
-    needs: [build, build1, build2]
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - run: |
