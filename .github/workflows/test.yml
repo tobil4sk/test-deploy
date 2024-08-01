@@ -1,0 +1,28 @@
+name: test
+
+on: push
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        name: [build1, build2]
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    outputs:
+      name: ${{ matrix.name }}
+    steps:
+    - run: echo "building!"
+      name: Building
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo ${{ needs.build.outputs.name }}
+        echo ${{ needs.build1.outputs.name }}
+        echo ${{ needs.build2.outputs.name }}
+        echo ${{ needs.build.build1.outputs.name }}
+        echo ${{ needs.build.build2.outputs.name }}
+      name: deploying
