@@ -2,13 +2,13 @@ name: manual_deploy
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 18 * * *"
+  # schedule:
+  #   - cron: "0 18 * * *"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment: testing
     steps:
     - run: echo "deploying ${{ github.ref_type }} ${{ github.ref_name }} ${{ github.ref }}!"
       name: deploying
