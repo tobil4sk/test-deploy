@@ -13,6 +13,24 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     # environment: production
+    permissions:
+      contents: write
     steps:
     - run: echo "deploying!"
       name: deploying
+    - name: configure git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    - name: Clone wiki
+      run: |
+        git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git wiki
+    - name: Make change
+      run: |
+        cd wiki
+        echo "Hello world!" > file.txt
+        git add file.txt
+        git commit -m "Add file.txt"
+    - name: Push
+      run: |
+        git push
