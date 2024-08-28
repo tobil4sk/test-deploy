@@ -18,13 +18,13 @@ jobs:
     steps:
     - run: echo "deploying!"
       name: deploying
+    - uses: actions/checkout@v4
+      with:
+        repository: ${{ github.repository }}.wiki
     - name: configure git
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-    - name: Clone wiki
-      run: |
-        git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git wiki
     - name: Make change
       run: |
         cd wiki
