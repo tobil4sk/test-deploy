@@ -6,7 +6,9 @@ jobs:
   build:
     strategy:
       matrix:
-        name: [build1, build2]
+        name:
+          - ''
+          - ''
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
     outputs:
