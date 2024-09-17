@@ -6,15 +6,14 @@ jobs:
   build:
     strategy:
       matrix:
-        name:
-          - ''
-          - ''
+        name: [build1, build2]
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
     outputs:
       name: ${{ matrix.name }}-${{ steps.build.outputs.version }}
     steps:
     - run: |
+        echo ${{ format("hello', 'world') }}
         echo "building!"
         echo "version=1" >> "$GITHUB_OUTPUT"
       id: build
