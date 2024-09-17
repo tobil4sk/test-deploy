@@ -13,7 +13,7 @@ jobs:
       name: ${{ matrix.name }}-${{ steps.build.outputs.version }}
     steps:
     - run: |
-        echo ${{ format("hello', 'world') }}
+        echo ${{ format('hello', 'world') }}
         echo "building!"
         echo "version=1" >> "$GITHUB_OUTPUT"
       id: build
