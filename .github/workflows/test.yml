@@ -9,8 +9,7 @@ jobs:
         name: [build1, build2]
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
-    outputs:
-      name: ${{ matrix.name }}-${{ steps.build.outputs.version }}
+    outputs: ${{ fromJson(format('{ "name": "{0}-{1}" }', matrix.name, steps.build.outputs.version )) }}
     steps:
     - run: |
         echo ${{ format('hello', 'world') }}
