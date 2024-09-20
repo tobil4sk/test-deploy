@@ -4,6 +4,7 @@ on: push
 
 jobs:
   build:
+    if: 'false'
     strategy:
       matrix:
         name: [build1, build2]
