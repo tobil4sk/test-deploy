@@ -8,10 +8,11 @@ jobs:
     steps:
     - run: |
         echo "building!" ${{ env.BUILD }} 
+        echo ${{ env.BUILD == 'true' }}
         echo ${{ env.BUILD == 'false' }}
       name: Building
       env:
-        BUILD: ${{ 'hello' != 'hi' }} 
+        BUILD: ${{ 'hello' == 'hi' }} 
 
   deploy:
     needs: build
