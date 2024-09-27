@@ -5,7 +5,14 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      JOB_WIDE: ${{ 'hello' != 'hi' && 'true' || '' }}
+      JOB_WIDE_EMPTY: ${{ 'hello' == 'hi' && 'true' || '' }}
     steps:
+    - run: echo hi
+      if: env.JOB_WIDE_EMPTY
+    - run: echo hi
+      if: env.JOB_WIDE
     - run: |
         echo "building!" ${{ env.BUILD }} 
         echo ${{ env.BUILD == 'true' }}
