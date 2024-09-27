@@ -6,8 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "building!"
+    - run: |
+        echo "building!" ${{ env.BUILD }} 
+        echo ${{ env.BUILD == 'false' }}
       name: Building
+      env:
+        BUILD: ${{ 'hello' != 'hi' }} 
 
   deploy:
     needs: build
